@@ -1,14 +1,17 @@
+// Update with your config settings.
+
 const env = require('./.env')
 
 module.exports = {
-    client: 'mysql',
+
+  client: 'postgresql',
     connection: env.db,
     pool: {
-        min: 2,
-        max: 10
+      min: 2,
+      max: 10
     },
     migrations: {
-        tableName: 'migrations'
+      tableName: 'knex_migrations'
     }
 
 };
