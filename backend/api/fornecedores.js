@@ -7,12 +7,22 @@ module.exports = app => {
 
         try {
             existe(fornecedor.nome, "Nome não informado!")
-
-            const fornecedorDB = await app.db('fornecedores')
-                .where({ nome: fornecedor.nome })
-                .first()
+           
             if (!fornecedor.id) {
+                const fornecedorDB = await app.db('fornecedores')
+                    .where({ nome: fornecedor.nome })
+                    .first()
                 naoExiste(fornecedorDB, "Fornecedor já cadastrado!")
+            } else {
+                const fornecedorDB_ = await app.db('fornecedores')
+                    .where({ nome: fornecedor.nome, id: req.params.id})
+                    .first()
+                if (!fornecedorDB_) {
+                    const fornecedorDB__ = await app.db('fornecedores')
+                        .where({ nome: fornecedor.nome })
+                        .first()
+                    naoExiste(fornecedorDB__, "Fornecedor já cadastrado!")
+                }
             }
         } catch (msg) {
             return res.status(400).send(msg)

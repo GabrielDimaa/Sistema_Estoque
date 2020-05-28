@@ -36,7 +36,7 @@ module.exports = app => {
         app.db('clientes')
             .select('id', 'nome', 'email', 'telefone', 'endereco', 'cidade')
             .where({ id: req.params.id })
-            .then(clientes => res.json(clientes))
+            .then(cliente => res.json(cliente))
             .catch(err => res.status(500).send(err))
     }
 

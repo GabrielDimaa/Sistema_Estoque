@@ -9,15 +9,25 @@ module.exports = app => {
             existe(subcategoria.nome, "Nome não informado!")
             existe(subcategoria.categoria_id, "Subcategoria necessita de uma Categoria!")
 
-            const subDB = await app.db('subcategorias')
-                .where({ nome: subcategoria.nome, 
-                    categoria_id: subcategoria.categoria_id})
-                .first()
             if (!subcategoria.id) {
+                const subDB = await app.db('subcategorias')
+                    .where({ nome: subcategoria.nome })
+                    //categoria_id: subcategoria.categoria_id
+                    .first()
                 naoExiste(subDB, "Subcategoria já cadastrado!")
+            } else {
+                const subDB_ = await app.db('subcategorias')
+                    .where({ nome: subcategoria.nome, id: req.params.id })
+                    .first()
+                if (!subDB_) {
+                    const subDB__ = await app.db('subcategorias')
+                        .where({ nome: subcategoria.nome })
+                        .first()
+                    naoExiste(subDB__, "Subcategoria já cadastrado!")
+                }
             }
         } catch (msg) {
-            return res.status(500).send(msg)
+            return res.status(400).send(msg)
         }
 
         if (subcategoria.id) {
@@ -46,7 +56,7 @@ module.exports = app => {
             .select('id', 'nome', 'id_pai', 'categoria_id')
             .where({ id: req.params.id })
             .first()
-            .then(subcategorias => res.json(subcategorias))
+            .then(subcategoria => res.json(subcategoria))
             .catch(err => res.status(500).send(err))
     }
 

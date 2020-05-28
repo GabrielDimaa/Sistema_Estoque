@@ -8,11 +8,21 @@ module.exports = app => {
         try {
             existe(categoria.nome, "Informe o nome da categoria!")
             
-            const categoriaDB = await app.db('categorias')
-                .where({ nome: categoria.nome })
-                .first()
             if (!categoria.id) {
+                const categoriaDB = await app.db('categorias')
+                    .where({ nome: categoria.nome })
+                    .first()
                 naoExiste(categoriaDB, "Categoria já cadastrada!")
+            } else {
+                const categoriaDB_ = await app.db('categorias')
+                    .where({ nome: categoria.nome, id: req.params.id })
+                    .first()
+                if (!categoriaDB_) {
+                    const categoriaDB__ = await app.db('categorias')
+                        .where({ nome: categoria.nome })
+                        .first()
+                    naoExiste(categoriaDB__, "Categoria já cadastrada!")
+                }
             }
         } catch (msg) {
             return res.status(400).send(msg)
@@ -43,7 +53,7 @@ module.exports = app => {
             .select('id', 'nome')
             .where({ id: req.params.id })
             .first()
-            .then(categorias => res.json(categorias))
+            .then(categoria => res.json(categoria))
             .catch(err => res.status(500).send(err))
     }
 

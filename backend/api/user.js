@@ -19,10 +19,21 @@ module.exports = app => {
             existe(user.confirmeSenha, "Confirmação da senha não informada!")
             igual(user.senha, user.confirmeSenha, "Senhas não conferem!")
 
-            const userDB = await app.db('users')
-                .where({ email: user.email }).first()
             if (!user.id) {
+                const userDB = await app.db('users')
+                    .where({ email: user.email })
+                    .first()
                 naoExiste(userDB, "Usuário já cadastrado!")
+            } else {
+                const userDB_ = await app.db('users')
+                    .where({ email: user.email, id: req.params.id})
+                    .first()
+                if (!userDB_) {
+                    const userDB__ = await app.db('users')
+                        .where({ email: user.email })
+                        .first()
+                    naoExiste(userDB__, "Usuário já cadastrado!")
+                }
             }
         } catch (msg) {
             return res.status(400).send(msg)
@@ -57,7 +68,7 @@ module.exports = app => {
             .select('id', 'nome', 'email')
             .where({ id: req.params.id })
             .first()
-            .then(users => res.json(users))
+            .then(user => res.json(user))
             .catch(err => res.status(500).send(err))
     }
 

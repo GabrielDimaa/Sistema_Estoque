@@ -2,8 +2,8 @@
 exports.up = function(knex) {
     return knex.schema.createTable('produtos', table => {
         table.increments('id').primary()
-        table.string('nome').notNull()
         table.string('codigo').notNull()
+        table.string('nome').notNull()
         table.float('estoque').notNull()
         table.float('preco_custo')
         table.float('preco_venda')

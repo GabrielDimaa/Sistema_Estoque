@@ -46,4 +46,13 @@ module.exports = app => {
         .get(app.api.subcategorias.getById)
         .put(app.api.subcategorias.save)
         .delete(app.api.subcategorias.remove)
+
+    app.route('/produtos')
+        .post(app.api.produtos.save)
+        .get(app.api.produtos.get)
+
+    app.route('/produtos/:id')
+        .get(app.api.produtos.getById)
+        .put(app.api.produtos.save)
+        .delete(app.api.produtos.remove)
 }
