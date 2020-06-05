@@ -23,7 +23,7 @@
 <style>
     .header {
         grid-area: header;
-        background-color: #454545;
+        background: linear-gradient(to left, rgb(86, 86, 87), rgb(34, 34, 36));
 
         display: flex;
         justify-content: center;

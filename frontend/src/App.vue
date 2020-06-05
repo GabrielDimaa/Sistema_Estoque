@@ -22,12 +22,9 @@
 </script>
 
 <style>
-    * {
-		font-family: 'Tajawal', sans-serif;
-	}
-
     body { 
         margin: 0;
+        font-family: 'Tajawal', sans-serif;
     }
 
     #app {
@@ -37,10 +34,10 @@
         height: 100vh;
         display: grid;
         grid-template-rows: 70px 1fr 40px;
-        grid-template-columns: 185px 1fr;
+        grid-template-columns: 200px 1fr;
         grid-template-areas: 
             "header header"
             "menu content"
-            "footer footer";
+            "menu footer";
     }
 </style>

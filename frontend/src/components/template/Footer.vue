@@ -1,7 +1,7 @@
 <template>
-    <div class="footer">
+    <footer class="footer">
         <span>Copyright <strong>Gabriel</strong> © 2020</span>
-    </div>
+    </footer>
 </template>
 
 <script>
@@ -14,6 +14,7 @@
     .footer {
         grid-area: footer;
         background-color:  #454545;
+        color: #F7FFF7;
     
         display: flex;
         align-items: center;

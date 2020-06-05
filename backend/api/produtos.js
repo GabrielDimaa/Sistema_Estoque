@@ -44,23 +44,25 @@ module.exports = app => {
         }
     }
 
-    const get = (req, res) => {
-        app.db('produtos')
+    const get = async (req, res) => {
+        await app.db('produtos')
+            .join('categorias', 'categorias.id', 'produtos.categoria_id')
             .select(
-                'id', 
-                'codigo', 
-                'nome', 
-                'estoque', 
-                'preco_custo', 
-                'preco_venda', 
-                'categoria_id', 
-                'subcategoria_id')
+                'produtos.id', 
+                'produtos.codigo',      
+                'produtos.nome', 
+                'produtos.estoque', 
+                'produtos.preco_custo', 
+                'produtos.preco_venda',
+                'categorias.nome as categoria',
+                'produtos.subcategoria_id')
             .then(produtos => res.json(produtos))
             .catch(err => res.status(500).json(err))
     }
 
     const getById = (req, res) => {
         app.db('produtos')
+            .join('categorias', 'categorias.id', 'produtos.categoria_id')
             .select(
                 'id', 
                 'codigo', 
@@ -68,7 +70,7 @@ module.exports = app => {
                 'estoque', 
                 'preco_custo', 
                 'preco_venda', 
-                'categoria_id', 
+                'categorias.nome as categoria',
                 'subcategoria_id')
             .where({ id: req.params.id })
             .first()

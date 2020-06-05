@@ -1,14 +1,14 @@
 <template>
     <div class="user-dropdown">
         <div class="user-button">
-            <span class="d-none s-sm-block">{{ user.name }}</span>
             <div class="user-dropdown-icon">
-               <i class="fas fa-user"></i>
+               <i class="fas fa-user-circle"></i>
             </div>
+            <span class="d-none s-sm-block">{{ user.name }}</span>
             <i class="fa fa-angle-down"></i>
         </div>
         <div class="user-dropdown-options">
-            <router-link to="/admin" v-if="user.admin">
+            <router-link to="/admin" >
                 <i class="fa fa-cogs"></i>Administração
             </router-link>
             <a href @click.prevent="logout"><i class="fa fa-sign-out"></i>Sair</a>
@@ -17,19 +17,13 @@
 </template>
 
 <script>
-    import { userKey } from '@/global'
     import { mapState } from 'vuex'
     import Gravatar from 'vue-gravatar'
 
     export default {
         name: 'UserDropdown',
         components: { Gravatar },
-        computed: mapState(['user']),
-        methods: {
-            logout() {
-
-            }
-        }
+        computed: mapState(['user'])
     }
 </script>
 
@@ -50,6 +44,10 @@
 
     .user-dropdown:hover {
         background-color: #313131;
+    }
+
+    .user-button span {
+        margin-right: 10px;
     }
 
     .user-dropdown-icon {

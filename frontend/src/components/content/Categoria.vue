@@ -1,43 +1,39 @@
 <template>
-    <div class="content">
-        <router-view></router-view>
+    <div class="categoria">
+        <b-table :fields="fields" :items="categorias"></b-table>
     </div>
 </template>
 
 <script>
+    import { baseApiUrl } from '@/global'
     import axios from 'axios'
-    import { baseApiUrl } from '../../global'
-
+    
     export default {
-        name: 'Content',
+        name: 'Categoria',
         data: function() {
             return {
-                users: [],
+                categoria: {},
+                categorias: [],
                 fields: [
                     { key: 'id', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
-                    { key: 'email', label: 'E-mail', sortable: true },
                 ]
             }
         },
         methods: {
-            loadUsers() {
-                const url = `${baseApiUrl}/users`
+            loadCategorias() {
+                const url = `${baseApiUrl}/categorias`
                 axios.get(url).then(res => {
-                    this.users = res.data
+                    this.categorias = res.data
                 })
             }
         },
         mounted() {
-            this.loadUsers()
+            this.loadCategorias()
         }
     }
 </script>
 
 <style>
-    .content {
-        grid-area: content;
-        background-color: white;
-        padding: 0 15px 0 15px;
-    }
+
 </style>
