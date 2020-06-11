@@ -1,25 +1,45 @@
 <template>
     <nav class="menu">
-        <div class="menu-itens">
-            <i class="fas fa-box icon1"></i>
-            <span>Estoque</span>
-            <i class="fas fa-angle-right icon2"></i>
-        </div>
-        <div class="menu-itens">
-            <i class="fas fa-layer-group icon1"></i>
-            <span>Cadastros</span>
-            <i class="fas fa-angle-right icon2"></i>
-        </div>
-        <div class="menu-itens">
-            <i class="fas fa-users icon1"></i>
-            <span>Clientes</span>
-            <i class="fas fa-angle-right icon2"></i>
-        </div>
-        <div class="menu-itens">
-            <i class="fas fa-dolly icon1"></i>
-            <span>Fornecedores</span>
-            <i class="fas fa-angle-right icon2"></i>
-        </div>
+        <router-link to="/estoque">
+            <div class="menu-itens">
+                <i class="fas fa-box icon1"></i>
+                <span>Estoque</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/cadastros">
+            <div class="menu-itens">
+                <i class="fas fa-layer-group icon1"></i>
+                <span>Cadastros</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/clientes">
+            <div class="menu-itens">
+                <i class="fas fa-users icon1"></i>
+                <span>Clientes</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/fornecedores">
+            <div class="menu-itens">
+                <i class="fas fa-dolly icon1"></i>
+                <span>Fornecedores</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/categorias">
+            <div class="menu-itens">
+                <i class="fas fa-folder-open"></i>
+                <span>Categorias</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+        
     </nav>
 </template>
 
@@ -59,5 +79,14 @@
 
     .menu-itens:hover {
         background-color: #313131;
+    }
+
+    .menu a {
+        text-decoration: none;
+    }
+
+    .menu a:hover {
+        color: #F7FFF7;
+        text-decoration: none;
     }
 </style>

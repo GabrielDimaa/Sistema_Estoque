@@ -37,4 +37,14 @@
         flex-grow: 1;
         text-align: center;
     }
+
+    .titulo a {
+        color: #F7FFF7;
+        text-decoration: none;
+    }
+
+    .titulo a:hover {
+        color: #F7FFF7;
+        text-decoration: none;
+    }
 </style>

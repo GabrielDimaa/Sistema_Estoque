@@ -27,14 +27,16 @@ module.exports = app => {
 
     const get = (req, res) => {
         app.db('clientes')
-            .select('id', 'nome', 'email', 'telefone', 'endereco', 'cidade')
+            .select('id', 'nome', 'email', 'telefone', 'telefoneAlt', 
+                'endereco', 'numero', 'cidade', 'cep')
             .then(clientes => res.json(clientes))
             .catch(err => res.status(500).send(err))
     }
 
     const getById = (req, res) => {
         app.db('clientes')
-            .select('id', 'nome', 'email', 'telefone', 'endereco', 'cidade')
+            .select('id', 'nome', 'email', 'telefone', 'telefoneAlt', 
+                'endereco', 'numero', 'cidade', 'cep')
             .where({ id: req.params.id })
             .then(cliente => res.json(cliente))
             .catch(err => res.status(500).send(err))

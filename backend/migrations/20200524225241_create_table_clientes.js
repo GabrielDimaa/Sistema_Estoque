@@ -5,7 +5,10 @@ exports.up = function(knex) {
         table.string('nome').notNull()
         table.string('email')
         table.string('telefone')
+        table.string('telefoneAlt')
         table.string('endereco')
+        table.integer('numero')
+        table.integer('cep', 8)
         table.string('cidade')
     })
 };
