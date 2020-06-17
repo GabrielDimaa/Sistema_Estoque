@@ -1,6 +1,7 @@
 <template>
     <div class="cliente">
         <PageTitle icon="fas fa-users" titulo="Clientes" subtitulo="Consultar / Cadastrar" color="rgb(42, 196, 132)" />
+        
         <b-form>
             <input type="hidden" id="cliente-id" v-model="cliente.id">
 

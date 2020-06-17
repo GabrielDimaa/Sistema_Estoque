@@ -8,7 +8,7 @@ module.exports = app => {
         try {
             existe(subcategoria.nome, "Nome não informado!")
             existe(subcategoria.categoria_id, "Subcategoria necessita de uma Categoria!")
-
+            
             if (!subcategoria.id) {
                 const subDB = await app.db('subcategorias')
                     .where({ nome: subcategoria.nome })
@@ -46,7 +46,6 @@ module.exports = app => {
 
     const get = (req, res) => {
         app.db('subcategorias')
-            .select('id', 'nome', 'id_pai', 'categoria_id')
             .then(subcategorias => res.json(subcategorias))
             .catch(err => res.status(500).send(err))
     }

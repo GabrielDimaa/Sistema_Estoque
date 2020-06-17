@@ -1,6 +1,7 @@
 <template>
     <div class="fornecedor">
         <PageTitle icon="fas fa-dolly" titulo="Fornecedores" subtitulo="Consultar / Cadastrar" color="#DB5461"/>
+        
         <b-form>
             <input type="hidden" id="fornecedor-id" v-model="fornecedor.id">
 
