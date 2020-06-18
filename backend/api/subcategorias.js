@@ -83,6 +83,6 @@ module.exports = app => {
             res.status(500).send(msg)
         }
     }
-
+    
     return { save, get, getById, remove }
 }

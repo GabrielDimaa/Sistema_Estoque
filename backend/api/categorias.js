@@ -42,49 +42,9 @@ module.exports = app => {
         }
     }
 
-    const categoriasComCaminho = async categorias => {
-        const getPai = (subcategorias, idPai) => {
-            const pai = subcategorias.filter(pai => pai.id === idPai)
-            return pai ? pai[0] : null
-        }
-
-        const subcategorias = await app.db('subcategorias')
-        console.log('subcategorias:', subcategorias)
-
-        const caminho = subcategorias.map(sub => {
-            let sequencia = sub.nome
-            let pai = getPai(subcategorias, sub.id_pai)
-            let ultimo
-
-            if (pai) {
-                while (pai) {
-                    sequencia = `${pai.nome} > ${sequencia}`
-                    ultimo = pai
-                    pai = getPai(subcategorias, pai.id_pai)
-                }
-
-                let categoria = categorias.filter(categoria => categoria.id === ultimo.categoria_id)
-                sequencia = `${categoria[0].nome} > ${sequencia}`
-            } else {
-                let categoria_ = categorias.filter(categoria => categoria.id === sub.categoria_id)
-                sequencia = `${categoria_[0].nome} > ${sub.nome}`
-            }
-
-            let objeto = {
-                id: sub.id,
-                nome: sequencia
-            }
-
-            return sequencia
-        })
-        console.log('resultado do map:', caminho)
-
-        return caminho
-    }
-
     const get = (req, res) => {
         app.db('categorias')
-            .then(categorias => res.json(categoriasComCaminho(categorias)))
+            .then(async categorias => res.json(await categoriasComCaminho(categorias)))
             .catch(err => res.status(500).send(err))
     }
 
@@ -120,6 +80,46 @@ module.exports = app => {
         } catch (msg) {
             res.status(400).send(msg)
         }
+    }
+
+    const categoriasComCaminho = async categorias => {
+        const getPai = (subcategorias, idPai) => {
+            const pai = subcategorias.filter(pai => pai.id === idPai)
+            return pai ? pai[0] : null
+        }
+
+        const subcategorias = await app.db('subcategorias')
+        console.log('subcategorias:', subcategorias)
+
+        const caminho = subcategorias.map(sub => {
+            let sequencia = sub.nome
+            let pai = getPai(subcategorias, sub.id_pai)
+            let ultimo
+
+            if (pai) {
+                while (pai) {
+                    sequencia = `${pai.nome} > ${sequencia}`
+                    ultimo = pai
+                    pai = getPai(subcategorias, pai.id_pai)
+                }
+
+                let categoria = categorias.filter(categoria => categoria.id === ultimo.categoria_id)
+                sequencia = `${categoria[0].nome} > ${sequencia}`
+            } else {
+                let categoria_ = categorias.filter(categoria => categoria.id === sub.categoria_id)
+                sequencia = `${categoria_[0].nome} > ${sub.nome}`
+            }
+
+            let objeto = {
+                id: sub.id,
+                nome: sequencia
+            }
+
+            return objeto
+        })
+        
+        //const json = { "categorias": caminho }
+        return caminho
     }
 
     return { save, get, getById, remove }
