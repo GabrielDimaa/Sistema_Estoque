@@ -50,7 +50,6 @@ module.exports = app => {
 
     const getById = (req, res) => {
         app.db('categorias')
-            .select('id', 'nome')
             .where({ id: req.params.id })
             .first()
             .then(categoria => res.json(categoria))
@@ -69,10 +68,11 @@ module.exports = app => {
                 .first()
             naoExiste(produtoDB, "Categoria possui produtos!")
 
-            if (!subDB || !produtoDB) {
+            if (!subDB && !produtoDB) {
                 const categoria = await app.db('categorias')
-                    .delete()
                     .where({ id: req.params.id })
+                    .first()
+                    .delete()
                 existe(categoria, "Categoria não encontrada!")
             }
 
@@ -89,12 +89,13 @@ module.exports = app => {
         }
 
         const subcategorias = await app.db('subcategorias')
-        console.log('subcategorias:', subcategorias)
 
         const caminho = subcategorias.map(sub => {
             let sequencia = sub.nome
             let pai = getPai(subcategorias, sub.id_pai)
             let ultimo
+            let id_pai = null
+            let categoria_id = null
 
             if (pai) {
                 while (pai) {
@@ -105,21 +106,25 @@ module.exports = app => {
 
                 let categoria = categorias.filter(categoria => categoria.id === ultimo.categoria_id)
                 sequencia = `${categoria[0].nome} > ${sequencia}`
+                id_pai = sub.id_pai
+                categoria_id = ultimo.categoria_id
             } else {
                 let categoria_ = categorias.filter(categoria => categoria.id === sub.categoria_id)
                 sequencia = `${categoria_[0].nome} > ${sub.nome}`
+                categoria_id = sub.categoria_id
             }
 
             let objeto = {
                 id: sub.id,
-                nome: sequencia
+                nome: sequencia,
+                categoria_id,
+                id_pai
             }
 
             return objeto
         })
         
-        //const json = { "categorias": caminho }
-        return caminho
+        return categorias.concat(caminho)
     }
 
     return { save, get, getById, remove }

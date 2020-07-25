@@ -1,5 +1,5 @@
 module.exports = app => {
-    const { existe, naoExiste, igual } = app.api.validation
+    const { igual, existe, naoExiste } = app.api.validation
 
     const save = async (req, res) => {
         const subcategoria = { ...req.body }
@@ -7,12 +7,10 @@ module.exports = app => {
 
         try {
             existe(subcategoria.nome, "Nome não informado!")
-            existe(subcategoria.categoria_id, "Subcategoria necessita de uma Categoria!")
             
             if (!subcategoria.id) {
                 const subDB = await app.db('subcategorias')
                     .where({ nome: subcategoria.nome })
-                    //categoria_id: subcategoria.categoria_id
                     .first()
                 naoExiste(subDB, "Subcategoria já cadastrado!")
             } else {
@@ -52,7 +50,6 @@ module.exports = app => {
 
     const getById = (req, res) => {
         app.db('subcategorias')
-            .select('id', 'nome', 'id_pai', 'categoria_id')
             .where({ id: req.params.id })
             .first()
             .then(subcategoria => res.json(subcategoria))
