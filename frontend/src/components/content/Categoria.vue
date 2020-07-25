@@ -76,6 +76,7 @@
                     this.categorias = res.data.map(item => {
                         return { ...item, value: item, text: item.nome }
                     })
+                    this.categorias.push({value: {}, text: "Selecione uma categoria"})
                 })
             },
             getById() {

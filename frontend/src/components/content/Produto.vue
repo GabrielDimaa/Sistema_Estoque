@@ -44,7 +44,7 @@
                 <b-col md="8" sm="12">
                     <b-form-group label="Categoria/Subcategoria:">
                         <b-form-select v-if="mode == 'save'" 
-                            :options="categorias" 
+                            :options="categorias"
                             v-model="option" />
                         <b-form-input v-else type="text" 
                             readonly
@@ -104,7 +104,7 @@
         methods: {
             linhaSelecionada(item) {
                 this.produto = item[0]
-                let categoria = ""
+                let categoria = "Sem categoria"
                 if (this.produto.categoria) categoria = `${this.produto.categoria}`
                 if (this.produto.subcategoria) categoria = categoria + ` > ${this.produto.subcategoria}`
                 this.option = categoria
@@ -118,6 +118,7 @@
                     this.categorias = res.data.map(item => {
                         return { ...item, value: item, text: item.nome }
                     })
+                    this.categorias.push({value: {}, text: "Selecione uma categoria"})
                 })
             },
             loadProdutos() {
