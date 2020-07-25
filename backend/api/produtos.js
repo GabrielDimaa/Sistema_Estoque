@@ -8,7 +8,7 @@ module.exports = app => {
         try {
             existe(produto.codigo, "Código não informado!")
             existe(produto.nome, "Nome não informado!")
-            existe(produto.estoque, "Quantidade em estoque não informado!")
+            existe(produto.estoque, "Estoque não informado!")
 
             if (!produto.id) {
                 const produtoDB = await app.db('produtos')
@@ -46,7 +46,8 @@ module.exports = app => {
 
     const get = async (req, res) => {
         await app.db('produtos')
-            .join('categorias', 'categorias.id', 'produtos.categoria_id')
+            .leftOuterJoin('categorias', 'categorias.id', 'produtos.categoria_id')
+            .leftOuterJoin('subcategorias', 'subcategorias.id', 'produtos.subcategoria_id')
             .select(
                 'produtos.id', 
                 'produtos.codigo',      
@@ -54,24 +55,16 @@ module.exports = app => {
                 'produtos.estoque', 
                 'produtos.preco_custo', 
                 'produtos.preco_venda',
+                'produtos.categoria_id',
+                'produtos.subcategoria_id',
                 'categorias.nome as categoria',
-                'produtos.subcategoria_id')
+                'subcategorias.nome as subcategoria')
             .then(produtos => res.json(produtos))
             .catch(err => res.status(500).json(err))
     }
 
     const getById = (req, res) => {
         app.db('produtos')
-            .join('categorias', 'categorias.id', 'produtos.categoria_id')
-            .select(
-                'id', 
-                'codigo', 
-                'nome', 
-                'estoque', 
-                'preco_custo', 
-                'preco_venda', 
-                'categorias.nome as categoria',
-                'subcategoria_id')
             .where({ id: req.params.id })
             .first()
             .then(produto => res.json(produto))

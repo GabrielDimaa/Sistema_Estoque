@@ -1,5 +1,7 @@
 <template>
     <nav class="menu">
+        <hr>
+
         <router-link to="/estoque">
             <div class="menu-itens">
                 <i class="fas fa-box icon1"></i>
@@ -36,6 +38,14 @@
             <div class="menu-itens">
                 <i class="fas fa-folder-open"></i>
                 <span>Categorias</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/produtos">
+            <div class="menu-itens">
+                <i class="fas fa-folder-open"></i>
+                <span>Produtos</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
         </router-link>

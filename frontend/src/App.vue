@@ -8,8 +8,6 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import { mapState } from 'vuex'
     import Header from './components/template/Header'
     import Menu from './components/template/Menu'
     import Content from './components/template/Content'
@@ -36,7 +34,7 @@
         grid-template-rows: 70px 1fr 40px;
         grid-template-columns: 200px 1fr;
         grid-template-areas: 
-            "header header"
+            "menu header"
             "menu content"
             "menu footer";
     }
