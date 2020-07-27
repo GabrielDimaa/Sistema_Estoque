@@ -20,9 +20,9 @@
 </script>
 
 <style>
-    body { 
+    * { 
         margin: 0;
-        font-family: 'Tajawal', sans-serif;
+        font-family: 'Mulish', sans-serif;
     }
 
     #app {

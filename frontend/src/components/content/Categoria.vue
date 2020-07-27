@@ -1,8 +1,11 @@
 <template>
     <div class="categoria">
-        <PageTitle icon="fas fa-folder-open" titulo="Categorias" subtitulo="Categorias / Subcategorias" color="#2B4162" />
-        
-        <b-form>
+        <div class="container-top">
+            <PageTitle icon="fas fa-folder-open" titulo="Categorias" subtitulo="Categorias / Subcategorias" color="#41B883" />
+            <b-button variant="warning" @click="alternar">Cadastrar Categorias</b-button>
+        </div>
+
+        <b-form v-if="form == 'cadastrar'">
             <input type="hidden" id="categoria-id" v-model="categoria.id">
 
             <b-row>
@@ -54,6 +57,7 @@
                 categorias: [],
                 option: {},
                 id: null,
+                form: 'ocultar',
                 fields: [
                     { key: 'id', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
@@ -148,6 +152,10 @@
                         })
                         .catch(showError)
                 }
+            },
+            alternar() {
+                if (this.form == 'cadastrar') this.form = 'ocultar'
+                else if (this.form == 'ocultar') this.form = 'cadastrar'
             }
         },
         mounted() {
@@ -158,6 +166,6 @@
 
 <style>
     .categoria {
-        margin: 10px;
+        margin: 20px;
     }
 </style>

@@ -1,8 +1,11 @@
 <template>
     <div class="fornecedor">
-        <PageTitle icon="fas fa-dolly" titulo="Fornecedores" subtitulo="Consultar / Cadastrar" color="#DB5461"/>
+        <div class="container-top">
+            <PageTitle icon="fas fa-dolly" titulo="Fornecedores" subtitulo="Consultar / Cadastrar" color="#41B883"/>
+            <b-button variant="warning" @click="alternar">Cadastrar Fornecedores</b-button>
+        </div>
         
-        <b-form>
+        <b-form v-if="form == 'cadastrar'">
             <input type="hidden" id="fornecedor-id" v-model="fornecedor.id">
 
             <b-row>
@@ -82,6 +85,7 @@
             return {
                 fornecedor: {},
                 fornecedores: [],
+                form: 'ocultar',
                 fields: [
                     { key: 'id', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
@@ -125,6 +129,10 @@
                         this.$toasted.global.defaultSuccess()
                     })
                     .catch(showError)
+            },
+            alternar() {
+                if (this.form == 'cadastrar') this.form = 'ocultar'
+                else if (this.form == 'ocultar') this.form = 'cadastrar'
             }
         },
         mounted() {
@@ -135,6 +143,21 @@
 
 <style>
     .fornecedor {
-        margin: 10px;
+        margin: 20px;
+    }
+
+    .container-top {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .container-top > PageTitle {
+        flex: 1;
+    }
+
+    .container-top > b-button {
+        flex: 1;
     }
 </style>

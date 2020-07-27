@@ -22,6 +22,6 @@
     .page-title > h2 {
         font-size: 1rem;
         padding-left: 5px;
-        color: #616161;
+        color: #5f5f5f;
     }
 </style>

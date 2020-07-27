@@ -1,19 +1,30 @@
 <template>
     <nav class="menu">
-        <hr>
-
-        <router-link to="/estoque">
-            <div class="menu-itens">
-                <i class="fas fa-box icon1"></i>
-                <span>Estoque</span>
-                <i class="fas fa-angle-right icon2"></i>
+        <router-link to="/">
+            <div class="img-logo">
+                <div class="img">
+                    <img src="https://demos.creative-tim.com/vue-black-dashboard-pro/img/icon-vue.png" alt="app-logo">
+                </div>
+                <div class="titulo">
+                    <p>Gestão da Empresa</p>
+                </div>
             </div>
         </router-link>
+
+        <hr>
 
         <router-link to="/cadastros">
             <div class="menu-itens">
                 <i class="fas fa-layer-group icon1"></i>
-                <span>Cadastros</span>
+                <span>Dashboard</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/estoque">
+            <div class="menu-itens">
+                <i class="fas fa-cubes icon1"></i>
+                <span>Estoque</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
         </router-link>
@@ -36,7 +47,7 @@
 
         <router-link to="/categorias">
             <div class="menu-itens">
-                <i class="fas fa-folder-open"></i>
+                <i class="fas fa-align-left icon1"></i>
                 <span>Categorias</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
@@ -44,7 +55,7 @@
 
         <router-link to="/produtos">
             <div class="menu-itens">
-                <i class="fas fa-folder-open"></i>
+                <i class="fas fa-box-open icon1"></i>
                 <span>Produtos</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
@@ -62,22 +73,24 @@
 <style>
     .menu {
         grid-area: menu;
-        background: linear-gradient(to right, rgb(2, 80, 116), rgb(74, 163, 201));
+        background-color: rgb(39, 39, 39);
     }
 
     .menu-itens {
         display: flex;
         padding: 20px;
-        color: #F7FFF7;
+        color: hsla(0, 0%, 100%, .9);
     }
 
     .menu-itens > span {
         margin: 0 20px 0 17px;
         flex-grow: 2;
         align-self: center;
+        font-weight: 400;
     }
 
     .menu-itens .icon1 {
+        font-size: 22px;
         flex-grow: 0;
         align-self: center;
     }
@@ -85,6 +98,7 @@
     .menu-itens .icon2 {
         flex-grow: 0;
         align-self: center;
+        align-items: flex-end;
     }
 
     .menu-itens:hover {
@@ -98,5 +112,32 @@
     .menu a:hover {
         color: #F7FFF7;
         text-decoration: none;
+    }
+
+    .img-logo {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .img > img {
+        width: 50px;
+        height: 50px;
+        background-color: hsla(0, 0%, 100%, .9);
+        border-radius: 50%;
+        flex-grow: 0;
+        margin-bottom: 10px;
+    }
+
+    .titulo > p {
+        flex-grow: 0;
+        color: hsla(0, 0%, 100%, .9);
+    }
+
+    hr { 
+        background-color: hsla(0, 0%, 100%, .9);
+        margin: 0 10px;
     }
 </style>

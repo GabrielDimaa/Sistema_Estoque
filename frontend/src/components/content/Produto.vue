@@ -1,8 +1,11 @@
 <template>
     <div class="produto">
-        <PageTitle icon="fas fa-dolly" titulo="Produtos" subtitulo="Consultar / Cadastrar" color="#DB5461"/>
+        <div class="container-top">
+            <PageTitle icon="fas fa-dolly" titulo="Produtos" subtitulo="Consultar / Cadastrar" color="#41B883"/>
+            <b-button variant="warning" @click="alternar">Cadastrar Produtos</b-button>
+        </div>
 
-        <b-form>
+        <b-form v-if="form == 'cadastrar'">
             <input type="hidden" id="produto-id" v-model="produto.id">
 
             <b-row>
@@ -90,6 +93,7 @@
                 categoria: {},
                 option: {},
                 mode: 'save',
+                form: 'ocultar',
                 fields: [
                     { key: 'codigo', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
@@ -182,6 +186,10 @@
                         this.reset()
                     })
                     .catch(showError)
+            },
+            alternar() {
+                if (this.form == 'cadastrar') this.form = 'ocultar'
+                else if (this.form == 'ocultar') this.form = 'cadastrar'
             }
         },
         mounted() {
@@ -193,6 +201,6 @@
 
 <style>
     .produto {
-        margin: 10px;
+        margin: 20px;
     }
 </style>

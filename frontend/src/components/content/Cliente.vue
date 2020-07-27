@@ -1,8 +1,11 @@
 <template>
     <div class="cliente">
-        <PageTitle icon="fas fa-users" titulo="Clientes" subtitulo="Consultar / Cadastrar" color="rgb(42, 196, 132)" />
-        
-        <b-form>
+        <div class="container-top">
+            <PageTitle icon="fas fa-users" titulo="Clientes" subtitulo="Consultar / Cadastrar" color="#41B883" />
+            <b-button variant="warning" @click="alternar">Cadastrar Clientes</b-button>
+        </div>
+
+        <b-form v-if="form == 'cadastrar'">
             <input type="hidden" id="cliente-id" v-model="cliente.id">
 
             <b-row>
@@ -96,6 +99,7 @@
             return {
                 cliente: {},
                 clientes: [],
+                form: 'ocultar',
                 fields: [
                     { key: 'id', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
@@ -138,6 +142,10 @@
                         this.$toasted.global.defaultSuccess()
                     })
                     .catch(showError)
+            },
+            alternar() {
+                if (this.form == 'cadastrar') this.form = 'ocultar'
+                else if (this.form == 'ocultar') this.form = 'cadastrar'
             }
         },
         mounted() {
@@ -148,6 +156,6 @@
 
 <style>
     .cliente {
-        margin: 10px;
+        margin: 20px;
     }
 </style>
