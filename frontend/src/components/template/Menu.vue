@@ -15,7 +15,7 @@
 
         <router-link to="/cadastros">
             <div class="menu-itens">
-                <i class="fas fa-layer-group icon1"></i>
+                <b-icon-grid1x2-fill class="icon1" />
                 <span>Dashboard</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
@@ -31,7 +31,7 @@
 
         <router-link to="/clientes">
             <div class="menu-itens">
-                <i class="fas fa-users icon1"></i>
+                <b-icon-people-fill class="icon1" />
                 <span>Clientes</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
@@ -47,7 +47,7 @@
 
         <router-link to="/categorias">
             <div class="menu-itens">
-                <i class="fas fa-align-left icon1"></i>
+                <b-icon-folder-fill class="icon1" />
                 <span>Categorias</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
@@ -55,7 +55,7 @@
 
         <router-link to="/produtos">
             <div class="menu-itens">
-                <i class="fas fa-box-open icon1"></i>
+                <b-icon-tag-fill class="icon1" />
                 <span>Produtos</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>

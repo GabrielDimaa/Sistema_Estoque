@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Header titulo="Gerenciamento de Estoque"/>
+        <Header titulo="Gestão da Empresa"/>
         <Menu />
         <Content />
         <Footer />
