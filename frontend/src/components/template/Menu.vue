@@ -13,7 +13,7 @@
 
         <hr>
 
-        <router-link to="/cadastros">
+        <router-link to="/">
             <div class="menu-itens">
                 <b-icon-grid1x2-fill class="icon1" />
                 <span>Dashboard</span>
