@@ -5,6 +5,7 @@ exports.up = function(knex) {
         table.string('codigo').notNull()
         table.string('nome').notNull()
         table.float('estoque').notNull()
+        table.float('estoque_minimo').notNull()
         table.float('preco_custo')
         table.float('preco_venda')
         table.integer('categoria_id').references('id').inTable('categorias')

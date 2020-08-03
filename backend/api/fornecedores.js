@@ -57,6 +57,13 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getTotal = (req, res) => {
+        app.db('fornecedores')
+            .count()
+            .then(fornecedor => res.json(fornecedor))
+            .catch(err => res.status(500).send(err))
+    }
+
     const remove = async (req, res) => {
         try {
             const fornecedor = await app.db('fornecedores')
@@ -70,5 +77,5 @@ module.exports = app => {
         }
     }
 
-    return { save, get, getById, remove }
+    return { save, get, getById, getTotal, remove }
 }

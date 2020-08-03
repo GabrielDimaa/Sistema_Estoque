@@ -14,7 +14,10 @@ module.exports = app => {
     app.route('/clientes')
         .post(app.api.clientes.save)
         .get(app.api.clientes.get)
-    
+
+    app.route('/clientes-total')
+        .get(app.api.clientes.getTotal)
+
     app.route('/clientes/:id')
         .get(app.api.clientes.getById)
         .put(app.api.clientes.save)
@@ -23,6 +26,9 @@ module.exports = app => {
     app.route('/fornecedores')
         .post(app.api.fornecedores.save)
         .get(app.api.fornecedores.get)
+
+    app.route('/fornecedores-total')
+        .get(app.api.fornecedores.getTotal)
 
     app.route('/fornecedores/:id')
         .get(app.api.fornecedores.getById)
@@ -50,6 +56,9 @@ module.exports = app => {
     app.route('/produtos')
         .post(app.api.produtos.save)
         .get(app.api.produtos.get)
+
+    app.route('/produtos-total')
+        .get(app.api.produtos.getTotal)
 
     app.route('/produtos/:id')
         .get(app.api.produtos.getById)

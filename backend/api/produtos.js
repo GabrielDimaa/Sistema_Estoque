@@ -9,6 +9,7 @@ module.exports = app => {
             existe(produto.codigo, "Código não informado!")
             existe(produto.nome, "Nome não informado!")
             existe(produto.estoque, "Estoque não informado!")
+            existe(produto.estoque_minimo, "Estoque mínimo não informado!")
 
             if (!produto.id) {
                 const produtoDB = await app.db('produtos')
@@ -53,6 +54,7 @@ module.exports = app => {
                 'produtos.codigo',      
                 'produtos.nome', 
                 'produtos.estoque', 
+                'produtos.estoque_minimo',
                 'produtos.preco_custo', 
                 'produtos.preco_venda',
                 'produtos.categoria_id',
@@ -71,6 +73,13 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getTotal = (req, res) => {
+        app.db('produtos')
+            .count()
+            .then(produto => res.json(produto))
+            .catch(err => res.status(500).send(err))
+    }
+
     const remove = async (req, res) => {
         try {
             const produtoDB = await app.db('produtos')
@@ -84,5 +93,5 @@ module.exports = app => {
         }
     }
 
-    return { save, get, getById, remove }
+    return { save, get, getById, getTotal, remove }
 }
