@@ -47,6 +47,7 @@
         box-shadow: 5px 5px 5px 5px rgba(199, 198, 198, 0.5);
         border-radius: 7px;
         padding: 13px 13px 20px 13px;
+        margin-bottom: 35px;
     }
 
     .resume:hover {
@@ -72,5 +73,6 @@
 
     .resume .titulo-valor > h2 {
         text-align: end;
+        color: #000000;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <nav class="menu">
+    <nav class="menu" v-show="visibilidadeMenu">
         <router-link to="/">
             <div class="img-logo">
                 <div class="img">
@@ -65,8 +65,11 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex' 
+
     export default {
-        name: 'Menu'
+        name: 'Menu',
+        computed: mapState(['visibilidadeMenu'])
     }
 </script>
 
@@ -78,31 +81,31 @@
 
     .menu-itens {
         display: flex;
-        padding: 20px;
+        padding: 20px 10px 20px 10px;
+        margin: 0 8px 0 8px;
+        justify-content: space-between;
         color: hsla(0, 0%, 100%, .9);
     }
 
     .menu-itens > span {
         margin: 0 20px 0 17px;
+        font-weight: 400;
         flex-grow: 2;
         align-self: center;
-        font-weight: 400;
     }
 
     .menu-itens .icon1 {
         font-size: 22px;
-        flex-grow: 0;
         align-self: center;
     }
 
     .menu-itens .icon2 {
-        flex-grow: 0;
         align-self: center;
-        align-items: flex-end;
     }
 
     .menu-itens:hover {
         background-color: #313131;
+        border-radius: 2px;
     }
 
     .menu a {

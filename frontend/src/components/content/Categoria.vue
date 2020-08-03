@@ -2,10 +2,10 @@
     <div class="categoria">
         <div class="container-top">
             <PageTitle icon="fas fa-folder-open" titulo="Categorias" subtitulo="Categorias / Subcategorias" color="#41B883" />
-            <b-button variant="warning" @click="alternar">Cadastrar Categorias</b-button>
+            <b-button variant="warning" @click="alternar">Cadastrar</b-button>
         </div>
 
-        <b-form v-if="form == 'cadastrar'">
+        <b-form class="forms" v-if="form == 'cadastrar'">
             <input type="hidden" id="categoria-id" v-model="categoria.id">
 
             <b-row>
@@ -165,7 +165,5 @@
 </script>
 
 <style>
-    .categoria {
-        margin: 20px;
-    }
+    
 </style>

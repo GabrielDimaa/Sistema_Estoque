@@ -2,10 +2,10 @@
     <div class="cliente">
         <div class="container-top">
             <PageTitle icon="fas fa-users" titulo="Clientes" subtitulo="Consultar / Cadastrar" color="#41B883" />
-            <b-button variant="warning" @click="alternar">Cadastrar Clientes</b-button>
+            <b-button variant="warning" @click="alternar">Cadastrar</b-button>
         </div>
 
-        <b-form v-if="form == 'cadastrar'">
+        <b-form class="forms" v-if="form == 'cadastrar'">
             <input type="hidden" id="cliente-id" v-model="cliente.id">
 
             <b-row>
@@ -155,7 +155,5 @@
 </script>
 
 <style>
-    .cliente {
-        margin: 20px;
-    }
+
 </style>

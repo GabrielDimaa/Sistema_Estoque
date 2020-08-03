@@ -10,6 +10,7 @@ import router from './config/router'
 import './config/bootstrap'
 import './config/axios'
 import './config/mensagens'
+import './config/mq'
 
 dom.watch()
 

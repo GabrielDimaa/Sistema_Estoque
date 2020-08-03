@@ -2,10 +2,10 @@
     <div class="fornecedor">
         <div class="container-top">
             <PageTitle icon="fas fa-dolly" titulo="Fornecedores" subtitulo="Consultar / Cadastrar" color="#41B883"/>
-            <b-button variant="warning" @click="alternar">Cadastrar Fornecedores</b-button>
+            <b-button variant="warning" @click="alternar">Cadastrar</b-button>
         </div>
         
-        <b-form v-if="form == 'cadastrar'">
+        <b-form class="forms" v-if="form == 'cadastrar'">
             <input type="hidden" id="fornecedor-id" v-model="fornecedor.id">
 
             <b-row>
@@ -142,13 +142,10 @@
 </script>
 
 <style>
-    .fornecedor {
-        margin: 20px;
-    }
-
     .container-top {
         display: flex;
         flex-wrap: nowrap;
+        margin: 20px;
         justify-content: space-between;
         align-items: center;
     }

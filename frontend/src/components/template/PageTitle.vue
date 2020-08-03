@@ -24,4 +24,8 @@
         padding-left: 5px;
         color: #5f5f5f;
     }
+
+    .page-title > hr {
+        background-color: rgba(233, 227, 227, 0);
+    }
 </style>

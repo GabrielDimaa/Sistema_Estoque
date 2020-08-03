@@ -2,10 +2,10 @@
     <div class="produto">
         <div class="container-top">
             <PageTitle icon="fas fa-dolly" titulo="Produtos" subtitulo="Consultar / Cadastrar" color="#41B883"/>
-            <b-button variant="warning" @click="alternar">Cadastrar Produtos</b-button>
+            <b-button variant="warning" @click="alternar">Cadastrar</b-button>
         </div>
 
-        <b-form v-if="form == 'cadastrar'">
+        <b-form class="forms" v-if="form == 'cadastrar'">
             <input type="hidden" id="produto-id" v-model="produto.id">
 
             <b-row>
@@ -23,28 +23,21 @@
                             v-model="produto.nome" />
                     </b-form-group>
                 </b-col>
-                <b-col md="4" sm="6">
+                <b-col md="3" sm="6">
                     <b-form-group label="Preço de venda:">
                         <b-form-input type="text" 
                             placeholder="Informe o preço de venda..." 
                             v-model="produto.preco_venda" />
                     </b-form-group>
                 </b-col>
-                <b-col md="4" sm="6">
+                <b-col md="3" sm="6">
                     <b-form-group label="Preço de custo:">
                         <b-form-input type="text" 
                             placeholder="Informe o preço de custo..." 
                             v-model="produto.preco_custo" />
                     </b-form-group>
                 </b-col>
-                <b-col md="4" sm="6">
-                    <b-form-group label="Estoque:">
-                        <b-form-input type="text" 
-                            placeholder="Informe quantidade em estoque..." 
-                            v-model="produto.estoque" />
-                    </b-form-group>
-                </b-col>
-                <b-col md="8" sm="12">
+                <b-col md="6" sm="12">
                     <b-form-group label="Categoria/Subcategoria:">
                         <b-form-select v-if="mode == 'save'" 
                             :options="categorias"
@@ -52,6 +45,20 @@
                         <b-form-input v-else type="text" 
                             readonly
                             v-model="option" />
+                    </b-form-group>
+                </b-col>
+                <b-col md="5" sm="6">
+                    <b-form-group label="Estoque:">
+                        <b-form-input type="text" 
+                            placeholder="Informe quantidade em estoque..." 
+                            v-model="produto.estoque" />
+                    </b-form-group>
+                </b-col>
+                <b-col md="5" sm="6">
+                    <b-form-group label="Estoque mínimo:">
+                        <b-form-input type="text" 
+                            placeholder="Informe o estoque mínimo..." 
+                            v-model="produto.estoque_minimo" />
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -99,7 +106,8 @@
                     { key: 'nome', label: 'Nome', sortable: true },
                     { key: 'preco_venda', label: 'Preço de Venda', sortable: true },
                     { key: 'preco_custo', label: 'Preço de Custo', sortable: true },
-                    { key: 'estoque', label: 'Quant. Estoque', sortable: true },
+                    { key: 'estoque', label: 'Estoque', sortable: true },
+                    { key: 'estoque_minimo', label: 'Estoque Mínimo', sortable: true },
                     { key: 'categoria', label: 'Categoria', sortable: true },
                     { key: 'subcategoria', label: 'Subcategoria', sortable: true }
                 ]
@@ -130,9 +138,6 @@
                 axios.get(url).then(res => {
                     this.produtos = res.data
                 })
-            },
-            getById() {
-
             },
             reset() {
                 this.loadProdutos()
@@ -200,7 +205,11 @@
 </script>
 
 <style>
-    .produto {
-        margin: 20px;
+    .forms {
+        background-color: rgb(255, 255, 255);
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 0 5px 5px rgba(209, 206, 206, 0.733);
+        margin-bottom: 10px;
     }
 </style>
