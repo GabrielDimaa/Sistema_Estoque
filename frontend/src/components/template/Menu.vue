@@ -29,22 +29,6 @@
             </div>
         </router-link>
 
-        <router-link to="/clientes">
-            <div class="menu-itens">
-                <b-icon-people-fill class="icon1" />
-                <span>Clientes</span>
-                <i class="fas fa-angle-right icon2"></i>
-            </div>
-        </router-link>
-
-        <router-link to="/fornecedores">
-            <div class="menu-itens">
-                <i class="fas fa-dolly icon1"></i>
-                <span>Fornecedores</span>
-                <i class="fas fa-angle-right icon2"></i>
-            </div>
-        </router-link>
-
         <router-link to="/categorias">
             <div class="menu-itens">
                 <b-icon-folder-fill class="icon1" />
@@ -57,6 +41,22 @@
             <div class="menu-itens">
                 <b-icon-tag-fill class="icon1" />
                 <span>Produtos</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/clientes">
+            <div class="menu-itens">
+                <b-icon-people-fill class="icon1" />
+                <span>Clientes</span>
+                <i class="fas fa-angle-right icon2"></i>
+            </div>
+        </router-link>
+
+        <router-link to="/fornecedores">
+            <div class="menu-itens">
+                <i class="fas fa-dolly icon1"></i>
+                <span>Fornecedores</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
         </router-link>

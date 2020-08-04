@@ -16,12 +16,7 @@
 <script>
     export default {
         name: 'Resume',
-        props: ['icon', 'titulo', 'color', 'value'],
-        // computed: {
-        //     style() {
-        //         return "color: " + (this.color || "#0000"), "font-size: 55px"
-        //     }
-        // }
+        props: ['icon', 'titulo', 'color', 'colorSombra', 'value'],
         computed: {
             style() {
                 return {
@@ -31,7 +26,7 @@
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    boxShadow: '5px 5px 5px 5px rgba(172, 170, 170, 0.6)',
+                    boxShadow: '0px 1px 5px 4px'.concat(this.colorSombra),
                     marginTop: '-37px',
                     borderRadius: '4px'
                 }
@@ -42,9 +37,10 @@
 
 <style>
     .resume {
+        background-color: rgba(207, 71, 128, 0.671);
         display: flex;
-        background-color: rgb(255, 255, 255);
-        box-shadow: 5px 5px 5px 5px rgba(199, 198, 198, 0.5);
+        background-color: #FFFF;
+        box-shadow: 0px 5px 5px 5px rgba(199, 198, 198, 0.5);
         border-radius: 7px;
         padding: 13px 13px 20px 13px;
         margin-bottom: 35px;
