@@ -2,7 +2,7 @@
     <div class="cliente">
         <div class="container-top">
             <PageTitle icon="fas fa-users" titulo="Clientes" subtitulo="Consultar / Cadastrar" color="#41B883" />
-            <b-button variant="warning" @click="alternar">Cadastrar</b-button>
+            <b-button variant="primary" @click="alternar">Cadastrar</b-button>
         </div>
 
         <b-form class="forms" v-if="form == 'cadastrar'">
@@ -71,7 +71,7 @@
                 <b-col xs="12">
                     <b-button variant="success" @click="save">Salvar</b-button>
                     <b-button variant="danger" @click="remove" class="ml-2">Excluir</b-button>
-                    <b-button variant="secondary" @click="reset" class="ml-2">Cancelar</b-button>
+                    <b-button variant="dark" @click="reset" class="ml-2">Cancelar</b-button>
                 </b-col>
             </b-row>
         </b-form>

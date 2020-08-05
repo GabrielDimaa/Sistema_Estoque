@@ -2,7 +2,7 @@
     <div class="categoria">
         <div class="container-top">
             <PageTitle icon="fas fa-folder-open" titulo="Categorias" subtitulo="Categorias / Subcategorias" color="#41B883" />
-            <b-button variant="warning" @click="alternar">Cadastrar</b-button>
+            <b-button variant="primary" @click="alternar">Cadastrar</b-button>
         </div>
 
         <b-form class="forms" v-if="form == 'cadastrar'">
@@ -27,7 +27,7 @@
                 <b-col xs="12">
                     <b-button variant="success" @click="save">Salvar</b-button>
                     <b-button variant="danger" class="ml-2" @click="remove">Excluir</b-button>
-                    <b-button variant="secondary" class="ml-2" @click="reset">Cancelar</b-button>
+                    <b-button variant="dark" class="ml-2" @click="reset">Cancelar</b-button>
                 </b-col>
             </b-row>
         </b-form>

@@ -6,6 +6,7 @@ import Produto from '../components/content/Produto.vue'
 import Fornecedor from '../components/content/Fornecedor.vue'
 import Categoria from '../components/content/Categoria.vue'
 import Dashboard from '../components/content/Dashboard.vue'
+import Estoque from '../components/content/Estoque.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,10 @@ const routes = [{
     name: 'dashboard',
     path: '/',
     component: Dashboard
+}, {
+    name: 'estoque',
+    path: '/estoque',
+    component: Estoque
 }]
 
 const router = new VueRouter({

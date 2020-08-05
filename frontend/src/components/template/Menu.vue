@@ -23,7 +23,7 @@
 
         <router-link to="/estoque">
             <div class="menu-itens">
-                <i class="fas fa-cubes icon1"></i>
+                <i class="fas fa-people-carry icon1"></i>
                 <span>Estoque</span>
                 <i class="fas fa-angle-right icon2"></i>
             </div>
@@ -105,7 +105,7 @@
 
     .menu-itens:hover {
         background-color: #313131;
-        border-radius: 2px;
+        border-radius: 5px;
     }
 
     .menu a {

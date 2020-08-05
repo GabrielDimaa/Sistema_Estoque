@@ -29,7 +29,7 @@
                     <aside>Total em Estoque</aside>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-cubes" id="icon-total-vendas"></i>
+                    <i class="fas fa-people-carry" id="icon-total-vendas"></i>
                 </div>
                 <div class="p">
                     <p>1000</p>
