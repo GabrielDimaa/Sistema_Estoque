@@ -2,10 +2,10 @@
     <div class="estoque">
         <div class="container-top">
             <PageTitle icon="fas fa-people-carry" titulo="Estoque" subtitulo="Consultar / Atualizar" color="#41B883"/>
-            <b-button variant="primary" @click="alternar">Ver estoque mínimo <i class="fas fa-bars" id="icon-bar"></i></b-button>
+            <b-button class="ml-3" variant="primary" @click="alternar">Ver estoque mínimo <i class="fas fa-bars" id="icon-bar"></i></b-button>
         </div>
 
-        <b-form class="forms" v-if="form == 'cadastrar'">
+        <b-form class="forms ml-3 mr-3" v-if="form == 'cadastrar'">
             <input type="hidden" id="produto-id" v-model="produto.id">
 
             <b-row>
@@ -71,23 +71,28 @@
             </b-row>
         </b-form>
 
-        <b-table v-if="table == 'editar'"
-            ref="selectableTable"
-            selectable
-            :select-mode="'single'"
-            :items="estoqueMinimo"
-            :fields="fields"
-            @row-selected="linhaSelecionada"
-            responsive="sm">
-        </b-table>
+        <div v-if="table == 'editar'" class="container-estoque color-red">
+            <div class="title-estoque mb-4 mt-3">
+                <i id="icon-b-table" class="fas fa-sort-amount-down-alt"></i>
+                <h2>Produtos Abaixo do Estoque</h2>
+            </div>
+            <b-table
+                ref="selectableTable"
+                selectable
+                :select-mode="'single'"
+                :items="estoqueMinimo"
+                :fields="fields"
+                @row-selected="linhaSelecionada"
+                responsive="sm">
+            </b-table>
+        </div>
 
-
-        <div class="b-table">
-            <div xs="12" class="title-estoque mb-4 mt-3">
+        <div class="container-estoque color-green">
+            <div class="title-estoque mb-4 mt-3">
                 <i id="icon-b-table" class="fas fa-clipboard-list"></i>
                 <h2>Estoque de Produtos</h2>
             </div>
-            <b-table class="table-estoque" striped hover :fields="fields" :items="estoque"></b-table>
+            <b-table striped hover :fields="fields" :items="estoque" responsive="sm"></b-table>
         </div>
     </div>
 </template>
@@ -214,7 +219,6 @@
     }
 
     #icon-b-table {
-        color: #55B984;
         font-size: 50px;
         margin-left: 40px;
     }
@@ -223,18 +227,22 @@
         margin-left: 20px;
         font-size: 2.4rem;
         font-weight: 400;
-        color: #55B984;
     }
 
-    .b-table {
-        background-color: #FFFF;
-        padding: 10px 20px 10px 15px;
-        border-radius: 20px;
-        margin: 0 18px 20px 18px;
+    .container-estoque {
+        display: block;
+        background-color: rgb(255, 255, 255);
+        padding: 27px;
+        margin: 15px 20px 15px 20px;
+        border-radius: 18px;
         box-shadow: 0px 5px 5px 5px rgba(209, 206, 206, 0.733);
     }
 
-    .b-table .table-estoque {
-        box-shadow: 0px 5px 5px 5px rgba(255, 255, 255, 0.733);
+    .color-red {
+        color: rgb(211, 60, 60);
+    }
+
+    .color-green {
+        color: #55B984;
     }
 </style>

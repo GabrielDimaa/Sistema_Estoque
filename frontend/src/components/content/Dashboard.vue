@@ -19,7 +19,12 @@
                 <div class="title-avisos">
                     <i class="fas fa-arrow-down" id="icon-abaixo"></i>
                     <aside>Produtos abaixo do estoque mínimo</aside>
-                    <b-button class="style-button" variant="success">Ver mais <i class="fas fa-arrow-right"></i></b-button>
+                    <router-link to="/estoque">
+                        <b-button class="style-button" variant="success">
+                            Ver mais 
+                            <i class="fas fa-arrow-right"></i>
+                        </b-button>
+                    </router-link>
                 </div>
                 <b-table striped hover :fields="fields" :items="estoqueMinimo"></b-table>
             </div>
@@ -119,6 +124,8 @@
 
     .container-inferior {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .avisos {
@@ -126,7 +133,7 @@
         display: block;
         background-color: rgb(255, 255, 255);
         padding: 27px;
-        margin: 0 25px 0 0;
+        margin: 0 25px 20px 0;
         border-radius: 18px;
         box-shadow: 0px 5px 5px 5px rgba(209, 206, 206, 0.733);
     }
@@ -158,10 +165,11 @@
 
     .estoque-total {
         display: flex;
+        flex-grow: 0;
         flex-direction: column;
         justify-content: space-between;
         background-color: rgb(255, 255, 255);
-        margin: 0 25px 0 0;
+        margin: 0 25px 20px 0;
         border-radius: 10px;
         box-shadow: 0px 5px 5px 5px rgba(209, 206, 206, 0.733);
     }
