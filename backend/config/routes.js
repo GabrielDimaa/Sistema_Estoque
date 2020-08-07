@@ -64,6 +64,9 @@ module.exports = app => {
     app.route('/produtos-estoque')
         .get(app.api.produtos.getEstoqueMinimo)
 
+    app.route('/produtos/estoque-total')
+        .get(app.api.produtos.estoqueTotal)
+
     app.route('/produtos/:id')
         .get(app.api.produtos.getById)
         .put(app.api.produtos.save)

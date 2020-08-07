@@ -82,15 +82,30 @@ module.exports = app => {
 
     const getEstoqueMinimo = (req, res) => {
         app.db('produtos')
-            .then(produto => res.json(estoqueMinimo(produto)))
+            .then(produtos => res.json(estoqueMinimo(produtos)))
             .catch(err => res.status(500).send(err))
     }
 
     const estoqueMinimo = produtos => {
         const estoqueMinimo = produtos.filter(itemProduto =>
             itemProduto.estoque < itemProduto.estoque_minimo)
-        
+
         return estoqueMinimo
+    }
+
+    const getEstoqueTotal = produtos => {
+        let totalProdutos = 0
+
+        for (var indice in produtos) {
+            totalProdutos += produtos[indice].estoque
+        }
+        return totalProdutos
+    }
+
+    const estoqueTotal = (req, res) => {
+        app.db('produtos')
+            .then(produtos => res.json(getEstoqueTotal(produtos)))
+            .catch(err => res.status(500).send(err))
     }
 
     const remove = async (req, res) => {
@@ -106,5 +121,5 @@ module.exports = app => {
         }
     }
 
-    return { save, get, getById, getTotal, getEstoqueMinimo, remove }
+    return { save, get, getById, getTotal, getEstoqueMinimo, estoqueTotal, remove }
 }
