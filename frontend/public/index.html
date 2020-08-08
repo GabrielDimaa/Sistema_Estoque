@@ -9,7 +9,39 @@
     <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
-    <title>Gestão</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['bar']});
+		google.charts.setOnLoadCallback(drawStuff);
+
+		function drawStuff() {
+			var data = new google.visualization.arrayToDataTable([
+			['', 'Unidade'],
+			["Janeiro", 44],
+			["Fevereiro", 31],
+			["Março", 12],
+			["Abril", 10],
+			['Maio', 3],
+			["Junho", 31],
+			["Julho", 12],
+			["Agosto", 10],
+			['Setembro', 3],
+			["Outubro", 31],
+			["Novembro", 12],
+			["Dezembro", 10]
+			])
+
+			var options = {
+			legend: { position: 'none' },
+			bar: { groupWidth: "90%" },
+			colors: ['#39A9DB']
+			}
+
+			var chart = new google.charts.Bar(document.getElementById('chart'))
+			chart.draw(data, google.charts.Bar.convertOptions(options))
+		}
+	</script>
+    <title>Gestão da Empresa</title>
   </head>
   <body>
     <noscript>

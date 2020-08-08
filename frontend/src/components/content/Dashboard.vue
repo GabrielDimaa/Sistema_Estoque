@@ -37,10 +37,19 @@
                     <i class="fas fa-people-carry" id="icon-total-vendas"></i>
                 </div>
                 <div class="p">
-                    <p>1000</p>
+                    <p>{{ estoqueTotal }}</p>
                 </div>
             </div>
         </div>
+
+        <div class="container-chart">
+            <div class="title-chart">
+                <i class="far fa-chart-bar" id="icon-chart"></i>
+                <aside>Cadastros Mensais de Produtos</aside>
+            </div>
+            <div id="chart"></div>
+        </div>
+
 
     </div>
 </template>
@@ -60,6 +69,7 @@
                 clientes: {},
                 produtos: {},
                 estoqueMinimo: [],
+                estoqueTotal: {},
                 fields: [
                     { key: 'codigo', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
@@ -95,13 +105,20 @@
                 axios.get(url).then(res => {
                     this.estoqueMinimo = res.data
                 })
+            },
+            getEstoqueTotal() {
+                const url = `${baseApiUrl}/produtos/estoque-total`
+                axios.get(url).then(res => {
+                    this.estoqueTotal = res.data
+                })
             }
         },
         mounted() {
             this.clientesTotal(),
             this.fornecedoresTotal(),
             this.produtosTotal(),
-            this.getEstoqueMinimo()
+            this.getEstoqueMinimo(),
+            this.getEstoqueTotal()
         }
     }
 </script>
@@ -126,6 +143,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        margin-left: 20px;
     }
 
     .avisos {
@@ -133,7 +151,7 @@
         display: block;
         background-color: rgb(255, 255, 255);
         padding: 27px;
-        margin: 0 25px 20px 0;
+        margin: 0 25px 25px 0;
         border-radius: 18px;
         box-shadow: 0px 5px 5px 5px rgba(209, 206, 206, 0.733);
     }
@@ -212,5 +230,37 @@
         font-weight: bold;
         font-size: 1.8rem;
         color: rgb(0, 0, 0);
+    }
+
+    .container-chart {
+        display: block;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        color: #228abb;
+        border-radius: 10px;
+        margin: 5px 25px 0 22px;
+        padding: 20px 0 20px 0;
+        box-shadow: 0px 5px 5px 5px rgba(209, 206, 206, 0.733);
+    }
+
+    #chart {
+        margin: 0 20px 0 20px;
+    }
+
+    .title-chart {
+        display: flex;
+        font-weight: bold;
+        font-size: 1.2rem;
+        margin: 10px 35px 35px;
+    }
+
+    .title-chart aside {
+        margin-left: 10px;
+    }
+
+    #icon-chart {
+        font-size: 25px;
     }
 </style>

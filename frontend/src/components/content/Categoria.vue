@@ -67,6 +67,7 @@
         methods: {
             linhaSelecionada(item) {
                 const selected = item[0]
+                this.form = 'cadastrar'
                 if (selected.id_pai || selected.categoria_id) {
                     this.id = selected.id
                     this.getById()

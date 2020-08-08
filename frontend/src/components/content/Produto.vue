@@ -123,6 +123,7 @@
                 this.categorias = []
                 this.categorias[0] = this.option
                 this.mode = "put/del"
+                this.form = 'cadastrar'
             },
             loadCategorias() {
                 const url = `${baseApiUrl}/categorias`

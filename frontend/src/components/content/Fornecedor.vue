@@ -100,6 +100,7 @@
         methods: {
             linhaSelecionada(item) {
                 this.fornecedor = item[0]
+                this.form = 'cadastrar'
             },
             loadFornecedores() {
                 const url = `${baseApiUrl}/fornecedores`

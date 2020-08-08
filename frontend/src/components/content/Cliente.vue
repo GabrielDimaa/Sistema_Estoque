@@ -103,6 +103,7 @@
                 fields: [
                     { key: 'id', label: 'Código', sortable: true },
                     { key: 'nome', label: 'Nome', sortable: true },
+                    { key: 'email', label: 'E-mail' },
                     { key: 'telefone', label: 'Telefone' },
                     { key: 'endereco', label: 'Endereço', sortable: true },
                     { key: 'numero', label: 'Número' },
@@ -113,6 +114,7 @@
         methods: {
             linhaSelecionada(item) {
                 this.cliente = item[0]
+                this.form = 'cadastrar'
             },
             loadClientes() {
                 const url = `${baseApiUrl}/clientes`
