@@ -2,7 +2,7 @@
     <div class="cliente">
         <div class="container-top">
             <PageTitle icon="fas fa-users" titulo="Clientes" subtitulo="Consultar / Cadastrar" color="#41B883" />
-            <b-button variant="primary" @click="alternar">Cadastrar</b-button>
+            <b-button variant="primary" @click="alternar">Cadastrar <i class="fas fa-bars" id="icon-bar"></i></b-button>
         </div>
 
         <b-form class="forms" v-if="form == 'cadastrar'">
