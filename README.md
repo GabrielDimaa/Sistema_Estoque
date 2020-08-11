@@ -7,7 +7,7 @@
   <img src="https://github.com/GabrielDimaa/Sistema_Estoque/blob/master/prints/dashboard.png" width="700px" height="600px"/>
   <img src="https://github.com/GabrielDimaa/Sistema_Estoque/blob/master/prints/estoque.png" width="750px" height="550px"/>
   <img src="https://github.com/GabrielDimaa/Sistema_Estoque/blob/master/prints/estoque-minimo.png" width="600px" height="750px"/>
-  <img src="https://github.com/GabrielDimaa/Sistema_Estoque/blob/master/prints/clientes.png" width="950px" height="700px"/>
+  <img src="https://github.com/GabrielDimaa/Sistema_Estoque/blob/master/prints/clientes.png" width="950px" height="600px"/>
   <img src="https://github.com/GabrielDimaa/Sistema_Estoque/blob/master/prints/produtos.png" width="850px" height="700px"/>
 </div>
 
