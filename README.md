@@ -20,7 +20,7 @@
 </p>
 
 ## :collision: Status do Projeto
-Status do Projeto: Em desenvolvimento (últimos detalhes) :hourglass_flowing_sand:
+Status do Projeto: Concluído ✔️
 
 ## :fire: Implementações e Tecnologias
 <h3>Backend</h3>
